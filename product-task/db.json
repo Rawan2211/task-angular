@@ -1,5 +1,28 @@
 {
   "products": [
-
+    {
+      "title": "iphone mobile",
+      "description": "it;s an apple production",
+      "price": "2000",
+      "brand": "apple",
+      "image": "",
+      "id": 1
+    },
+    {
+      "title": "iphone 15 ",
+      "description": "apple mobile",
+      "price": "3909",
+      "brand": "apple",
+      "image": null,
+      "id": 2
+    },
+    {
+      "title": "samsung mobile",
+      "description": "samsung",
+      "price": "2099",
+      "brand": "samsung",
+      "image": "",
+      "id": 3
+    }
   ]
 }

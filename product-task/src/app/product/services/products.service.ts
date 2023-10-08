@@ -14,6 +14,16 @@ export class ProductsService {
       return res;
     }))
   }
-
-
+  getProducts(){
+    return this.http.get<any>("http://localhost:3000/products")
+    .pipe(map((res:any)=>{
+      return res;
+    }))
+  }
+  getProductById(id:number){
+    return this.http.get<any>(`http://localhost:3000/products/${id}`)
+    .pipe(map((res:any)=>{
+      return res;
+    }))
+  }
 }

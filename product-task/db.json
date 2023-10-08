@@ -23,6 +23,22 @@
       "brand": "samsung",
       "image": "",
       "id": 3
+    },
+    {
+      "title": "android",
+      "description": "android",
+      "price": "2342",
+      "brand": "android",
+      "image": "",
+      "id": 4
+    },
+    {
+      "title": "iphone 7",
+      "description": "apple mobile",
+      "price": "3843",
+      "brand": "apple",
+      "image": "",
+      "id": 5
     }
   ]
 }

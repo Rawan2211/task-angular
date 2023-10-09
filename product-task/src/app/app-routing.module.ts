@@ -1,11 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AddproductformComponent } from './components/addproductform/addproductform.component';
-import { ProductTableComponent } from './components/product-table/product-table.component';
+import { ProductComponent } from './components/product/product.component';
 
 const routes: Routes = [
-  {path:'productform',component:AddproductformComponent},
-  {path:'producttable',component:ProductTableComponent}
+  {path:'product',component:ProductComponent}
 ];
 
 @NgModule({

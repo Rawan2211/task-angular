@@ -4,5 +4,6 @@ export interface IProduct {
   price:string;
   brand:string;
   image?:string;
+  id:number;
 
 }

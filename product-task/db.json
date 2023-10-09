@@ -1,33 +1,9 @@
 {
   "products": [
     {
-      "title": "iphone mobile",
-      "description": "it;s an apple production",
-      "price": "2000",
-      "brand": "apple",
-      "image": "",
-      "id": 1
-    },
-    {
-      "title": "iphone 15 ",
-      "description": "apple mobile",
-      "price": "3909",
-      "brand": "apple",
-      "image": null,
-      "id": 2
-    },
-    {
-      "title": "samsung mobile",
-      "description": "samsung",
-      "price": "2099",
-      "brand": "samsung",
-      "image": "",
-      "id": 3
-    },
-    {
       "title": "android",
       "description": "android",
-      "price": "2342",
+      "price": "300032",
       "brand": "android",
       "image": "",
       "id": 4
@@ -35,10 +11,58 @@
     {
       "title": "iphone 7",
       "description": "apple mobile",
-      "price": "3843",
+      "price": "20000",
       "brand": "apple",
       "image": "",
       "id": 5
+    },
+    {
+      "title": "iphone x ",
+      "description": "apple mobile",
+      "price": "39000",
+      "brand": "apple",
+      "image": "",
+      "id": 6
+    },
+    {
+      "title": "samsung",
+      "description": "samsung mobile",
+      "price": "39002",
+      "brand": "samsung",
+      "image": "",
+      "id": 7
+    },
+    {
+      "title": "iphone 15",
+      "description": "apple mobile",
+      "price": "409000",
+      "brand": "apple",
+      "image": null,
+      "id": 8
+    },
+    {
+      "title": "macbook",
+      "description": "apple laptop",
+      "price": "2000",
+      "brand": "apple",
+      "image": "",
+      "id": 9
+    },
+    {
+      "title": "iphone 8 ",
+      "description": "apple mobile",
+      "price": "8000",
+      "brand": "apple",
+      "image": "",
+      "id": 10
+    },
+    {
+      "title": "iphone 11",
+      "description": "apple mobile",
+      "price": "5000",
+      "brand": "apple",
+      "image": "",
+      "id": 11
     }
   ]
 }

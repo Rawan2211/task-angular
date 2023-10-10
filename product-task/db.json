@@ -41,28 +41,12 @@
       "id": 8
     },
     {
-      "title": "macbook",
-      "description": "apple laptop",
-      "price": "2000",
-      "brand": "apple",
-      "image": "",
-      "id": 9
-    },
-    {
       "title": "iphone 8 ",
       "description": "apple mobile",
       "price": "8000",
       "brand": "apple",
       "image": "",
       "id": 10
-    },
-    {
-      "title": "iphone 11",
-      "description": "apple mobile",
-      "price": "5000",
-      "brand": "apple",
-      "image": "",
-      "id": 11
     }
   ]
 }

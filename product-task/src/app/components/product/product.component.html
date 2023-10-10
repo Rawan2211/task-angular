@@ -28,7 +28,7 @@
 </table>
 
 <hr>
-<button type="button" class="btn btn-secondary m-2" (click)="showForm()">Form</button>
+<button type="button" class="btn btn-primary m-2" (click)="showForm()"><span *ngIf="showProductForm" > X </span> <span  *ngIf="!showProductForm"> + </span></button>
 
 <section class="container" *ngIf="showProductForm">
 <form [formGroup]="ProductForm" class="bg-dark text-light m-2 mt-4 container p-3" (ngSubmit)="addProduct()">

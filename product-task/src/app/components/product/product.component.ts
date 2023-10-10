@@ -10,33 +10,35 @@ import { ProductsService } from 'src/app/product/services/products.service';
   styleUrls: ['./product.component.scss']
 })
 export class ProductComponent {
-  public ProductForm = new FormGroup({
+
+  public ProductForm!: FormGroup ;
+  prdList:IProduct[] =[];
+  val:any;
+  prd!: IProduct;
+  showProductForm:boolean = false;
+  constructor(private fb: FormBuilder,public route:ActivatedRoute,public router:Router,private productService:ProductsService)
+  {
+
+  }
+  createProductForm(){
+    this.ProductForm = new FormGroup({
     title: new FormControl(''),
     description:new FormControl(''),
     price:new FormControl(''),
     brand:new FormControl(''),
     image:new FormControl('')
   });
-  prdList:IProduct[];
-  val:any;
-  prd!: IProduct;
-  showProductForm:boolean = false;
-  constructor(private fb: FormBuilder,public route:ActivatedRoute,public router:Router,public productService:ProductsService)
-  {
-  this.prdList=[
-  ]
   }
-
   ngOnInit(){
     this.displayProducts();
-
+    this.createProductForm();
   }
 
   addProduct(){
     this.productService.postProducts(this.ProductForm.value)
     .subscribe(res=>{
     this.ProductForm.reset();
-    window.location.reload()
+    this.displayProducts();
   })
   }
 
@@ -50,12 +52,8 @@ export class ProductComponent {
   deletePrd(id:number){
     this.productService.deleteProduct(id)
     .subscribe(data=>{
+      this.displayProducts();
     });
-    this.productService.getProducts().subscribe((response)=>{
-      this.prdList=response;
-    });
-    window.location.reload();
-
   }
 
     selectProduct(id:number){
@@ -69,10 +67,9 @@ export class ProductComponent {
 
   updatePrd(id:number,data:any){
     this.productService.updateProduct(id,data).subscribe(data=>{
-
+      this.ProductForm.reset();
+      this.displayProducts();
     });
-    this.ProductForm.reset();
-    window.location.reload();
     }
 
     showForm(){

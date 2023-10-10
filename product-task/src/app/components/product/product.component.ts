@@ -16,7 +16,7 @@ export class ProductComponent {
   val:any;
   prd!: IProduct;
   showProductForm:boolean = false;
-  constructor(private fb: FormBuilder,public route:ActivatedRoute,public router:Router,private productService:ProductsService)
+  constructor(private route:ActivatedRoute,private router:Router,private productService:ProductsService)
   {
 
   }

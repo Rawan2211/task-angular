@@ -12,10 +12,11 @@ import { ProductsService } from 'src/app/product/services/products.service';
 export class ProductComponent {
 
   public ProductForm!: FormGroup ;
-  prdList:IProduct[] =[];
-  val:any;
-  prd!: IProduct;
+  productList:IProduct[] =[];
+  public input:any;
+  product!: IProduct;
   showProductForm:boolean = false;
+  textValue!:string;
   constructor(private route:ActivatedRoute,private router:Router,private productService:ProductsService)
   {
 
@@ -45,7 +46,7 @@ export class ProductComponent {
   displayProducts(){
     this.productService.getProducts()
     .subscribe(products=>{
-      this.prdList=products;
+      this.productList=products;
     })
   }
 
@@ -56,17 +57,17 @@ export class ProductComponent {
     });
   }
 
-    selectProduct(id:number){
-    let val=id;
-      this.productService.getProductById(val).subscribe(data=>{
-        this.prd=data;
-        this.ProductForm.patchValue(this.prd);
+    editProduct(id:number){
+
+      this.productService.getProductById(id).subscribe(data=>{
+        this.product=data;
+        this.ProductForm.patchValue(this.product);
       })
     }
 
 
-  updatePrd(id:number,data:any){
-    this.productService.updateProduct(id,data).subscribe(data=>{
+  updatePrd(id:number){
+    this.productService.updateProduct(id,this.ProductForm.value).subscribe(data=>{
       this.ProductForm.reset();
       this.displayProducts();
     });
@@ -75,4 +76,10 @@ export class ProductComponent {
     showForm(){
       this.showProductForm= !this.showProductForm;
     }
+
+    getTextValue(value:string)
+    {
+      this.textValue=value;
+    }
+
 }

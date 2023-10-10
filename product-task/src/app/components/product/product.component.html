@@ -11,7 +11,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let product of prdList">
+    <tr *ngFor="let product of productList">
       <td>{{product?.title}}</td>
       <td>{{product?.description}}</td>
       <td>{{product?.price}}</td>
@@ -19,7 +19,7 @@
       <td>{{product?.image}}</td>
       <td>
         <button type="button" class="btn btn-secondary m-2" (click)="deletePrd(product.id)">Delete</button>
-        <button type="button" class="btn btn-secondary m-2" (click)="selectProduct(product.id)">Select</button>
+        <button type="button" class="btn btn-secondary m-2" (click)="editProduct(product.id)">Select</button>
 
       </td>
     </tr>
@@ -31,7 +31,7 @@
 <button type="button" class="btn btn-primary m-2" (click)="showForm()"><span *ngIf="showProductForm" > X </span> <span  *ngIf="!showProductForm"> + </span></button>
 
 <section class="container" *ngIf="showProductForm">
-<form [formGroup]="ProductForm" class="bg-dark text-light m-2 mt-4 container p-3" (ngSubmit)="addProduct()">
+<form [formGroup]="ProductForm" class="bg-dark text-light m-2 mt-4 container p-3">
   <div class="form-group">
     <label for="product-title">Title</label>
     <input type="text" formControlName="title" class="form-control" id="product-title" >
@@ -53,7 +53,19 @@
     <input type="file" formControlName="image"  class="form-control" id="product-image">
   </div>
   <button type="button" class="btn btn-secondary m-4 w-25" (click)="addProduct()">Add</button>
-  <button type="button" class="btn btn-secondary m-4 w-25" (click)="updatePrd(prd.id,ProductForm.value)">Update</button>
+  <button type="button" class="btn btn-secondary m-4 w-25" (click)="updatePrd(product.id)">Update</button>
 
 </form>
 </section>
+
+<hr>
+
+<div>
+  <input #box type="text" class="m-2" id="name" placeholder="enter your name"  (keyup)="getTextValue(box.value)">
+
+</div>
+<div>
+  <input type="text" class="m-2" value="{{textValue}}">
+
+</div>
+

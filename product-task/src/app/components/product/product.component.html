@@ -64,8 +64,7 @@
   <input #box type="text" class="m-2" id="name" placeholder="enter your name"  (keyup)="getTextValue(box.value)">
 
 </div>
-<div>
-  <input type="text" class="m-2" value="{{textValue}}">
 
-</div>
+<app-text [textValue]="textValue"></app-text>
+
 

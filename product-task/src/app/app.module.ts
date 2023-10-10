@@ -7,11 +7,13 @@ import { NavbarComponent } from './layout/navbar/navbar.component';
 import {HttpClientModule} from '@angular/common/http'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductComponent } from './components/product/product.component';
+import { TextComponent } from './components/product/text/text.component';
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    ProductComponent
+    ProductComponent,
+    TextComponent
 
       ],
   imports: [

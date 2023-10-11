@@ -10,13 +10,19 @@ import { ProductComponent } from './components/product/product.component';
 import { TextComponent } from './components/product/text/text.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
+import { MatTableModule } from '@angular/material/table'
+import { MatSortModule } from '@angular/material/sort';
+import { ProductAngularMaterialComponent } from './components/product-angular-material/product-angular-material.component';
+import {MatCardModule} from '@angular/material/card';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     ProductComponent,
-    TextComponent
+    TextComponent,
+    ProductAngularMaterialComponent
 
       ],
   imports: [
@@ -26,7 +32,11 @@ import {MatButtonModule} from '@angular/material/button';
     ReactiveFormsModule,
     FormsModule,
     BrowserAnimationsModule,
-    MatButtonModule
+    MatButtonModule,
+    MatTableModule,
+    MatSortModule,
+    MatCardModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

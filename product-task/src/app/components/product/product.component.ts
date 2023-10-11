@@ -17,10 +17,13 @@ export class ProductComponent {
   product!: IProduct;
   showProductForm:boolean = false;
   textValue!:string;
+
+
   constructor(private route:ActivatedRoute,private router:Router,private productService:ProductsService)
   {
 
   }
+
   createProductForm(){
     this.ProductForm = new FormGroup({
     title: new FormControl(''),
@@ -81,5 +84,7 @@ export class ProductComponent {
     {
       this.textValue=value;
     }
+
+
 
 }

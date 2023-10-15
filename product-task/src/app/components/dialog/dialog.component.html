@@ -1,0 +1,22 @@
+
+<div>
+<mat-dialog-content> Title: {{data.title}}</mat-dialog-content>
+<mat-dialog-content> Description: {{data.description}}</mat-dialog-content>
+<mat-dialog-content> Price: {{data.price}}</mat-dialog-content>
+<mat-dialog-content> Brand: {{data.brand}}</mat-dialog-content>
+<mat-dialog-content> Image: {{data.image}}</mat-dialog-content>
+</div>
+
+
+<div>
+<h2 mat-dialog-title *ngIf="data.Message === 'add' ">Product Added Successfully</h2>
+
+
+<h2 mat-dialog-title *ngIf="data.Message === 'delete' ">Product Deleted Successfully</h2>
+
+<h2 mat-dialog-title *ngIf="data.Message === 'update' ">Product Updated Successfully</h2>
+
+<mat-dialog-actions *ngIf="data.Message === 'update' || 'delete' ||  'add' ">
+  <button mat-button mat-dialog-close > Ok</button>
+</mat-dialog-actions>
+</div>

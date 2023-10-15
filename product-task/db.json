@@ -22,6 +22,7 @@
       "price": "39000",
       "brand": "apple",
       "image": "",
+      "type": "mobile",
       "id": 6
     },
     {
@@ -38,6 +39,7 @@
       "price": "409000",
       "brand": "apple",
       "image": null,
+      "type": "mobile",
       "id": 8
     },
     {
@@ -46,7 +48,17 @@
       "price": "9000",
       "brand": "apple",
       "image": "",
+      "type": "mobile",
       "id": 10
+    },
+    {
+      "title": "iphone 7",
+      "description": "apple mobile",
+      "price": "20000",
+      "brand": "apple",
+      "image": "",
+      "type": "mobile",
+      "id": 11
     }
   ]
 }

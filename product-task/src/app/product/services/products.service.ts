@@ -41,5 +41,10 @@ product:IProduct[];
       return res;
     }))
   }
-
+  getBrand(){
+    return this.http.get<any>("http://localhost:3000/products")
+    .pipe(
+      map((response:[]) => response.map(item => item ['brand']))
+      )
+  }
 }

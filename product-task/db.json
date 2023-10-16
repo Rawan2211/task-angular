@@ -6,59 +6,26 @@
       "price": "300032",
       "brand": "android",
       "image": "",
+      "type": "mobile",
       "id": 4
     },
     {
-      "title": "iphone 7",
+      "title": "iphone",
       "description": "apple mobile",
-      "price": "20000",
-      "brand": "apple",
-      "image": "",
-      "id": 5
-    },
-    {
-      "title": "iphone x ",
-      "description": "apple mobile",
-      "price": "39000",
+      "price": "30000",
       "brand": "apple",
       "image": "",
       "type": "mobile",
-      "id": 6
+      "id": 5
     },
     {
       "title": "samsung",
       "description": "samsung mobile",
-      "price": "39002",
+      "price": "2000",
       "brand": "samsung",
-      "image": "",
-      "id": 7
-    },
-    {
-      "title": "iphone 15",
-      "description": "apple mobile",
-      "price": "409000",
-      "brand": "apple",
       "image": null,
       "type": "mobile",
-      "id": 8
-    },
-    {
-      "title": "iphone 8 ",
-      "description": "apple mobile",
-      "price": "9000",
-      "brand": "apple",
-      "image": "",
-      "type": "mobile",
-      "id": 10
-    },
-    {
-      "title": "iphone 7",
-      "description": "apple mobile",
-      "price": "20000",
-      "brand": "apple",
-      "image": "",
-      "type": "mobile",
-      "id": 11
+      "id": 6
     }
   ]
 }

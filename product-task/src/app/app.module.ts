@@ -20,6 +20,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatRadioModule} from '@angular/material/radio';
 import { DialogComponent } from './components/dialog/dialog.component';
+import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { DialogComponent } from './components/dialog/dialog.component';
     MatFormFieldModule,
     MatInputModule,
     MatAutocompleteModule,
-    MatRadioModule
+    MatRadioModule,
+    MatSnackBarModule
 
 
   ],

@@ -1,10 +1,11 @@
 
-<div>
-<mat-dialog-content> Title: {{data.title}}</mat-dialog-content>
-<mat-dialog-content> Description: {{data.description}}</mat-dialog-content>
-<mat-dialog-content> Price: {{data.price}}</mat-dialog-content>
-<mat-dialog-content> Brand: {{data.brand}}</mat-dialog-content>
-<mat-dialog-content> Image: {{data.image}}</mat-dialog-content>
+<div *ngIf="data.message === 'showdata' && data.Message !== 'delete'">
+<mat-dialog-content> Title: {{data.rowData.title}}</mat-dialog-content>
+<mat-dialog-content> Description: {{data.rowData.description}}</mat-dialog-content>
+<mat-dialog-content> Price: {{data.rowData.price}}</mat-dialog-content>
+<mat-dialog-content> Brand: {{data.rowData.brand}}</mat-dialog-content>
+<mat-dialog-content> Image: {{data.rowData.image}}</mat-dialog-content>
+
 </div>
 
 
@@ -16,7 +17,7 @@
 
 <h2 mat-dialog-title *ngIf="data.Message === 'update' ">Product Updated Successfully</h2>
 
-<mat-dialog-actions *ngIf="data.Message === 'update' || 'delete' ||  'add' ">
-  <button mat-button mat-dialog-close > Ok</button>
+<mat-dialog-actions *ngIf="(data.Message === 'update' || 'delete' ||  'add')">
+  <button mat-button mat-dialog-close  > Ok</button>
 </mat-dialog-actions>
 </div>

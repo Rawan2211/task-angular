@@ -1,6 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IProduct } from 'src/app/product/models/iproduct';
 import { ProductsService } from 'src/app/product/services/products.service';
@@ -14,17 +15,22 @@ import { DialogComponent } from '../dialog/dialog.component';
 export class ProductAngularMaterialComponent {
   public ProductForm!: FormGroup ;
   productList:IProduct[] =[];
-  displayedColumns: string[] = ['title', 'description', 'price','brand', 'image','type','edit'];
+  displayedColumns: string[] = ['title', 'description', 'price','brand', 'image','type','edit','details'];
   product!: IProduct;
   showProductForm:boolean = false;
+  showAddButton:boolean =false;
+  showUpdateButton:boolean=false;
   clickedRows = new Set<IProduct>();
   autoComplete = "auto"
   brandOptions=[];
   filterOptions=[];
   showProductDetails:boolean = false;
-  constructor(private fb:FormBuilder,public dialog:MatDialog,private route:ActivatedRoute,private router:Router,private productService:ProductsService)
+  constructor(private _snackBar: MatSnackBar,private fb:FormBuilder,public dialog:MatDialog,private route:ActivatedRoute,private router:Router,private productService:ProductsService)
   {
 
+  }
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action);
   }
 
 getBrandCategeory(){
@@ -48,7 +54,10 @@ initBrandCategory(){
 
 openDescriptionDialog(row:any){
   this.dialog.open(DialogComponent,{
-    data:row
+    data:{
+      rowData:row,
+    message:"showdata"
+    }
   });
 }
 
@@ -71,7 +80,8 @@ Message:"delete"
 }
 openUpdateMessage(){
   this.dialog.open(DialogComponent,{data:{
-    Message:"update"
+    Message:"update",
+    showDialog:"show"
     }
     })
 }
@@ -103,8 +113,11 @@ openUpdateMessage(){
   }
 
   showForm(){
+    this.showAddButton=true;
+    this.showUpdateButton=false;
     this.showProductForm= !this.showProductForm;
   }
+
 
 
   addProduct(){
@@ -112,7 +125,8 @@ openUpdateMessage(){
     .subscribe(res=>{
     this.ProductForm.reset();
     this.displayProducts();
-    this.openAddMessage();
+    // this.openAddMessage();
+    this.openSnackBar('Product Added Successfully', 'OK');
   })
   }
 
@@ -120,7 +134,8 @@ openUpdateMessage(){
     this.productService.deleteProduct(id)
     .subscribe(data=>{
       this.displayProducts();
-      this.openDeleteMessage();
+      // this.openDeleteMessage();
+      this.openSnackBar('Product Deleted Successfully', 'OK');
     });
   }
 
@@ -129,13 +144,15 @@ openUpdateMessage(){
     this.productService.updateProduct(id,this.ProductForm.value).subscribe(data=>{
       this.ProductForm.reset();
       this.displayProducts();
-      this.openUpdateMessage();
+      // this.openUpdateMessage();
+      this.openSnackBar('Product Updated Successfully', 'OK')
     });
     }
 
     editProduct(id:number){
       if(this.showProductForm===true){
-
+        this.showAddButton=false;
+        this.showUpdateButton=true;
       this.productService.getProductById(id).subscribe(data=>{
         this.product=data;
         this.ProductForm.patchValue(this.product);
@@ -143,13 +160,18 @@ openUpdateMessage(){
     }
     else{
       this.showForm();
+      this.showAddButton=false;
+      this.showUpdateButton=true;
       this.productService.getProductById(id).subscribe(data=>{
         this.product=data;
         this.ProductForm.patchValue(this.product);
-
   })
     }
     }
 
+    clearForm(){
+      this.showAddButton=true;
+      this.ProductForm.reset();
+    }
 
 }

@@ -26,6 +26,15 @@
       "image": null,
       "type": "mobile",
       "id": 6
+    },
+    {
+      "title": "samsung",
+      "description": "samsung mobile",
+      "price": "2000",
+      "brand": "samsung",
+      "image": null,
+      "type": "laptop",
+      "id": 7
     }
   ]
 }

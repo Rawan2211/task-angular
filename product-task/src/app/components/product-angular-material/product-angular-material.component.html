@@ -96,8 +96,7 @@
 </mat-radio-group>
 
 <div class="button">
-<button mat-raised-button class="m-2" color="primary" (click)="addProduct()" *ngIf="showAddButton">Add</button>
-<button mat-raised-button class="m-2"  color="primary" (click)="updatePrd(product.id)" *ngIf="showUpdateButton && !showAddButton">Update</button>
+<button mat-raised-button class="m-2" color="primary" (click)="saveButton(product.id)" > <span *ngIf="showAddButton"> Add</span>  <span *ngIf="showUpdateButton && !showAddButton"> Update</span></button>
 <button mat-raised-button class="m-2"  color="primary" (click)="clearForm()">Delete</button>
 
 </div>

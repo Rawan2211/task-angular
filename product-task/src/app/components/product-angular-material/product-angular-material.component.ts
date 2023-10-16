@@ -174,4 +174,14 @@ openUpdateMessage(){
       this.ProductForm.reset();
     }
 
+
+    saveButton(id:number){
+      if (this.showAddButton==true && this.showUpdateButton==false) {
+        this.addProduct();
+
+      }
+    else if(this.showUpdateButton==true && this.showAddButton==false){
+      this.updatePrd(id);
+    }
+    }
 }

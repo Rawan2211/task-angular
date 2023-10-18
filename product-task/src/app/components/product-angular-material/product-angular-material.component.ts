@@ -6,7 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { IProduct } from 'src/app/product/models/iproduct';
 import { ProductsService } from 'src/app/product/services/products.service';
 import { DialogComponent } from '../dialog/dialog.component';
-
+import{TranslateService} from '@ngx-translate/core'
 @Component({
   selector: 'app-product-angular-material',
   templateUrl: './product-angular-material.component.html',
@@ -25,11 +25,21 @@ export class ProductAngularMaterialComponent {
   brandOptions=[];
   filterOptions=[];
   showProductDetails:boolean = false;
-  constructor(private _snackBar: MatSnackBar,private fb:FormBuilder,public dialog:MatDialog,private route:ActivatedRoute,private router:Router,private productService:ProductsService)
+  currentLanguage!:string;
+
+  constructor(public translate: TranslateService, private _snackBar: MatSnackBar,private fb:FormBuilder,public dialog:MatDialog,private route:ActivatedRoute,private router:Router,private productService:ProductsService)
   {
 
   }
-  openSnackBar(message: string, action: string) {
+
+changeCurrentLanguage(language:string){
+
+    this.translate.use(language);
+    localStorage.setItem('currentLanguage',language);
+
+  }
+
+openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action);
   }
 
@@ -66,122 +76,96 @@ getDetailsOfProduct(id:number){
   return data;
 
 }
-openAddMessage(){
-  this.dialog.open(DialogComponent,{data:{
-Message:"add"
-}
-})
-}
-openDeleteMessage(){
-  this.dialog.open(DialogComponent,{data:{
-Message:"delete"
-}
-})
-}
-openUpdateMessage(){
-  this.dialog.open(DialogComponent,{data:{
-    Message:"update",
-    showDialog:"show"
-    }
-    })
-}
 
-  createProductForm(){
+
+createProductForm(){
     this.ProductForm = new FormGroup({
     title: new FormControl(''),
     description:new FormControl(''),
     price:new FormControl(''),
     brand:new FormControl(''),
     image:new FormControl(''),
-    type: new FormControl('')
+    type: new FormControl(''),
+    id: new FormControl('')
   });
   }
 
-  ngOnInit(){
+ngOnInit(){
     this.displayProducts();
     this.createProductForm();
     this.getBrandCategeory();
     this.initBrandCategory();
+    this.currentLanguage = localStorage.getItem('currentLanguage') || 'en';
+    this.translate.use(this.currentLanguage);
   }
 
 
-  displayProducts(){
+displayProducts(){
     this.productService.getProducts()
     .subscribe(products=>{
       this.productList=products;
+
     })
   }
 
-  showForm(){
+showForm(){
+  this.clearForm();
     this.showAddButton=true;
     this.showUpdateButton=false;
     this.showProductForm= !this.showProductForm;
   }
 
-
-
-  addProduct(){
+addProduct(){
     this.productService.postProducts(this.ProductForm.value)
-    .subscribe(res=>{
-    this.ProductForm.reset();
+    .subscribe(_=>{
+    this.clearForm();
     this.displayProducts();
-    // this.openAddMessage();
     this.openSnackBar('Product Added Successfully', 'OK');
   })
   }
 
-  deletePrd(id:number){
+deletePrd(id:number){
     this.productService.deleteProduct(id)
-    .subscribe(data=>{
+    .subscribe(_=>{
       this.displayProducts();
-      // this.openDeleteMessage();
       this.openSnackBar('Product Deleted Successfully', 'OK');
     });
   }
 
-
-  updatePrd(id:number){
-    this.productService.updateProduct(id,this.ProductForm.value).subscribe(data=>{
-      this.ProductForm.reset();
+updatePrd(id:number){
+    this.productService.updateProduct(id,this.ProductForm.value).subscribe(_=>{
+      this.clearForm();
       this.displayProducts();
-      // this.openUpdateMessage();
       this.openSnackBar('Product Updated Successfully', 'OK')
     });
     }
 
-    editProduct(id:number){
+editProduct(product:{}){
       if(this.showProductForm===true){
-        this.showAddButton=false;
-        this.showUpdateButton=true;
-      this.productService.getProductById(id).subscribe(data=>{
-        this.product=data;
-        this.ProductForm.patchValue(this.product);
-      })
+      this.ProductForm.patchValue(product);
+
+
     }
     else{
       this.showForm();
-      this.showAddButton=false;
-      this.showUpdateButton=true;
-      this.productService.getProductById(id).subscribe(data=>{
-        this.product=data;
-        this.ProductForm.patchValue(this.product);
-  })
+      this.ProductForm.patchValue(product);
+
     }
     }
 
-    clearForm(){
+clearForm(){
       this.showAddButton=true;
       this.ProductForm.reset();
     }
 
 
-    saveButton(id:number){
-      if (this.showAddButton==true && this.showUpdateButton==false) {
-        this.addProduct();
+saveButton(){
+      if (this.ProductForm.value.id) {
+        this.updatePrd(this.ProductForm.value.id);
 
       }
-    else if(this.showUpdateButton==true && this.showAddButton==false){
-      this.updatePrd(id);
+    else{
+      this.addProduct();
     }
     }
 }

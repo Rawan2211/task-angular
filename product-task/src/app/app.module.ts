@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './layout/navbar/navbar.component';
-import {HttpClientModule} from '@angular/common/http'
+import {HttpClient, HttpClientModule} from '@angular/common/http'
 import { FormsModule, ReactiveFormsModule,FormControl } from '@angular/forms';
 import { ProductComponent } from './components/product/product.component';
 import { TextComponent } from './components/product/text/text.component';
@@ -21,6 +21,13 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatRadioModule} from '@angular/material/radio';
 import { DialogComponent } from './components/dialog/dialog.component';
 import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+
+export function createTranslateLoader(http:HttpClient){
+  return new TranslateHttpLoader(http,'../assets/i18n/','.json');
+}
 
 @NgModule({
   declarations: [
@@ -49,7 +56,15 @@ import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
     MatInputModule,
     MatAutocompleteModule,
     MatRadioModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    TranslateModule.forRoot({
+      loader:{
+        provide:TranslateLoader,
+        useFactory:(createTranslateLoader),
+        deps:[HttpClient]
+      },
+      defaultLanguage:'en'
+    })
 
 
   ],

@@ -1,0 +1,22 @@
+{
+  "table_product":{
+  "title":"الاسم",
+  "description":"المواصفات",
+  "price":"السعر",
+  "brand":"الماركة",
+  "image":"الصورة",
+  "type":"النوع"
+},
+  "edit":"تعديل",
+  "details":"عرض التفاصيل",
+  "delete":"مسح",
+  "add":"اضافة",
+  "update":"تحديث",
+  "product_form":{
+
+    "mobile":"موبايل",
+    "laptop":"حاسوب"
+    }
+
+
+}

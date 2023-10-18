@@ -1,5 +1,5 @@
 {
-  "table_product":{
+  "table-product":{
   "title":"الاسم",
   "description":"المواصفات",
   "price":"السعر",
@@ -12,7 +12,7 @@
   "delete":"مسح",
   "add":"اضافة",
   "update":"تحديث",
-  "product_form":{
+  "product-form":{
 
     "mobile":"موبايل",
     "laptop":"حاسوب"

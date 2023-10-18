@@ -132,8 +132,8 @@ deletePrd(id:number){
     });
   }
 
-updatePrd(id:number){
-    this.productService.updateProduct(id,this.ProductForm.value).subscribe(_=>{
+updatePrd(){
+    this.productService.updateProduct(this.ProductForm.value.id,this.ProductForm.value).subscribe(_=>{
       this.clearForm();
       this.displayProducts();
       this.openSnackBar('Product Updated Successfully', 'OK')
@@ -161,7 +161,7 @@ clearForm(){
 
 saveButton(){
       if (this.ProductForm.value.id) {
-        this.updatePrd(this.ProductForm.value.id);
+        this.updatePrd();
 
       }
     else{

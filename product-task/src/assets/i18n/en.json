@@ -1,5 +1,5 @@
 {
-  "table_product":{
+  "table-product":{
   "title":"Title",
   "description":"Description",
   "price":"Price",
@@ -12,7 +12,7 @@
   "delete":"Delete",
   "add":"Add",
   "update":"Update",
-  "product_form":{
+  "product-form":{
 
   "mobile":"Mobile",
   "laptop":"Laptop"

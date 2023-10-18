@@ -82,8 +82,8 @@
   <mat-label>{{"table_product.brand"| translate}}</mat-label>
   <input matInput type="text" formControlName="brand" [matAutocomplete]="auto" />
   <mat-autocomplete #auto="matAutocomplete">
-  <mat-option *ngFor="let item of filterOptions" [value]="item" >
-  {{item}}
+  <mat-option *ngFor="let option of filterOptions" [value]="option" >
+  {{option}}
   </mat-option>
 </mat-autocomplete>
 </mat-form-field>

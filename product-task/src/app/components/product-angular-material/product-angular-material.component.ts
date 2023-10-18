@@ -13,7 +13,7 @@ import{TranslateService} from '@ngx-translate/core'
   styleUrls: ['./product-angular-material.component.scss']
 })
 export class ProductAngularMaterialComponent {
-  public ProductForm!: FormGroup ;
+  ProductForm!: FormGroup ;
   productList:IProduct[] =[];
   displayedColumns: string[] = ['title', 'description', 'price','brand', 'image','type','edit','details'];
   product!: IProduct;

@@ -8,8 +8,10 @@ import { IProduct } from '../models/iproduct';
 })
 export class ProductsService {
 product:IProduct[];
+
   constructor(private http : HttpClient) {
     this.product=[]
+
     }
   postProducts(data : any){
     return this.http.post<any>("http://localhost:3000/products",data)
@@ -47,4 +49,8 @@ product:IProduct[];
       map((response:[]) => response.map(item => item ['brand']))
       )
   }
+
+
+
+
 }

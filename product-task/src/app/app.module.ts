@@ -23,6 +23,7 @@ import { DialogComponent } from './components/dialog/dialog.component';
 import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { LoginComponent } from './components/login/login.component';
 
 
 export function createTranslateLoader(http:HttpClient){
@@ -36,7 +37,8 @@ export function createTranslateLoader(http:HttpClient){
     ProductComponent,
     TextComponent,
     ProductAngularMaterialComponent,
-    DialogComponent
+    DialogComponent,
+    LoginComponent
 
       ],
   imports: [

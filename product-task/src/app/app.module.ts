@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './layout/navbar/navbar.component';
-import {HttpClient, HttpClientModule} from '@angular/common/http'
+import {HttpClient, HttpClientModule,HTTP_INTERCEPTORS} from '@angular/common/http'
 import { FormsModule, ReactiveFormsModule,FormControl } from '@angular/forms';
 import { ProductComponent } from './components/product/product.component';
 import { TextComponent } from './components/product/text/text.component';
@@ -24,7 +24,7 @@ import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { LoginComponent } from './components/login/login.component';
-
+import { TokenInterceptorService } from './user/services/token-interceptor.service';
 
 export function createTranslateLoader(http:HttpClient){
   return new TranslateHttpLoader(http,'../assets/i18n/','.json');
@@ -70,7 +70,13 @@ export function createTranslateLoader(http:HttpClient){
 
 
   ],
-  providers: [],
+  providers: [{
+    provide:HTTP_INTERCEPTORS,
+    useClass:TokenInterceptorService,
+    multi:true
+  }
+
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -66,6 +66,9 @@ constructor(private route:ActivatedRoute,private router:Router,private userServi
   }
   logoutUser(){
     localStorage.removeItem('token');
+    this.openSnackBar('Logout Successfully', 'OK');
+
+
 
   }
   getAllUsers(){
@@ -77,17 +80,14 @@ constructor(private route:ActivatedRoute,private router:Router,private userServi
   }
 
   checkRegisteredUser(email:any){
-    console.log(email);
     for (let i = 0; i < this.user.length; i++) {
         if (email==this.user[i].email) {
+          this.openSnackBar('User Login Successfully', 'OK');
           localStorage.setItem('token','1234');
           this.router.navigate(['productAngular']);
-          this.openSnackBar('User Login Successfully', 'OK');
         }
-        else {
+        else{
           this.showRegister();
-          this.openSnackBar('Must Register First', 'OK');
-
         }
 
     }

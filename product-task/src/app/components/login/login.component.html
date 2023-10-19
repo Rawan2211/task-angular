@@ -1,0 +1,39 @@
+<form [formGroup]="RegisterForm" *ngIf="showRegisterForm" class="form container">
+
+  <mat-form-field>
+    <mat-label>ID</mat-label>
+    <input matInput formControlName="id" type="number">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Email</mat-label>
+    <input matInput formControlName="email" type="email">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Password</mat-label>
+    <input matInput formControlName="password">
+  </mat-form-field>
+
+<div>
+  <button mat-raised-button class="m-2"  color="primary" (click)="addUser()" >Register</button>
+  <button mat-raised-button class="m-2"  color="primary" (click)="showLogin()" >Login</button>
+</div>
+
+  </form>
+
+
+
+<form [formGroup]="LoginForm" *ngIf="showLoginForm"  class="form container">
+  <mat-form-field>
+    <mat-label>Email</mat-label>
+    <input matInput formControlName="email" required>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Password</mat-label>
+    <input matInput formControlName="password" required>
+  </mat-form-field>
+<div>
+  <button mat-raised-button class="m-2"  color="primary" (click)="checkRegisteredUser(LoginForm.value.email)" >Login</button>
+  <button mat-raised-button class="m-2"  color="primary" (click)="logoutUser()" >Logout</button>
+</div>
+
+  </form>
